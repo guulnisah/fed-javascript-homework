@@ -1,4 +1,4 @@
-const randomNumber = Math.ceil(Math.random() * 10);
+const randomNumber = Math.ceil(Math.random() * 100);
 console.log(randomNumber)
 
 let typedNumber = parseInt(prompt('Guess the number...'))
