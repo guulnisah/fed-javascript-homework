@@ -2,6 +2,10 @@
 // let number = parseInt(prompt("enter a number"))
 // console.log(Math.trunc(number % 100 / 10))
 
+
+
+
+
 ////TASK-2
 // let number = parseInt(prompt("enter a number that has an odd number of digits"))
 
@@ -17,9 +21,15 @@
 // alert(result)
 
 
+
+
+
 // // TASK-3
-// let thirdNumber = parseInt(prompt("enter a number"))
-//  console.log(Math.trunc(thirdNumber / 10))
+// let number = parseInt(prompt("enter a number"))
+// alert(Math.trunc(number / 10))
+
+
+
 
 
 // // TASK-4
@@ -38,11 +48,16 @@
 
 
 
+
+
 // // TASK-5
-// let fifthNumber = parseInt(prompt("enter a number"))
-// if (fifthNumber % 3 === 0 && fifthNumber % 5 === 0) {
+// let number = parseInt(prompt("enter a number"))
+// if (number % 3 === 0 && number % 5 === 0) {
 //     alert("your number can be divided by 3 and 5")
 // } else { alert("your number CAN'T be divided by 3 or 5") }
+
+
+
 
 
 // // TASK-6
@@ -60,6 +75,8 @@
 
 
 
+
+
 // // TASK-7
 // let number = parseInt(prompt("enter a number"))
 // let n = number + 1;
@@ -69,11 +86,18 @@
 // alert(n)
 
 
+
+
+
 // // TASK-8
 // let eigthNumber = parseInt(prompt("enter a number"))
 // let eigthNumberExp = parseInt(prompt("expo"))
 // let expResult = eigthNumber ** eigthNumberExp;
 // alert(expResult)
+
+
+
+
 
 // // TASK-9 and TASK-10
 
@@ -87,6 +111,8 @@
 
 
 
+
+
 // // TASK-11
 // let number = parseInt(prompt("enter a number"))
 
@@ -97,6 +123,10 @@
 // let n5 = Math.trunc(number % 10)
 
 // alert(`${n5}${n4}${n3}${n2}${n1}`)
+
+
+
+
 
 // // TASK-12
 
@@ -119,6 +149,8 @@
 
 
 
+
+
 // // TASK-13
 
 // let a = parseInt(prompt("a"))
@@ -129,12 +161,21 @@
 
 
 
+
+
 // // TASK-14
 
-//? can't do without string methods
+// let number = parseInt(prompt("enter a number"))
 
+// let sum = 0, digit = 1;
+// while (number > 0) {
+//     if (digit % 2 === 1)
+//         sum = sum + (number % 10);
+//     number = Math.trunc(number / 10);
+//     digit++
+// }
 
-
+// alert(sum)
 
 
 
@@ -150,6 +191,7 @@
 // } else {
 //     alert(1)
 // }
+
 
 
 
@@ -176,6 +218,10 @@
 // let mid = d1 + d2 + d3 - max - min;
 // alert(`${min} ${mid} ${max}`)
 
+
+
+
+
 // // TASK-18
 
 // let primeNumber = parseInt(prompt("enter a number to check if it's prime"))
@@ -191,12 +237,19 @@
 // } else { alert('enter a number higher than 1') }
 
 
+
+
+
 // // TASK-19
 
 // let cubeNumber = parseInt(prompt("enter a number"))
 // let smth = Math.floor(Math.cbrt(cubeNumber));
 
 // alert(smth ** 3)
+
+
+
+
 
 // // TASK-20
 
