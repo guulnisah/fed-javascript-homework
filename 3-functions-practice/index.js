@@ -80,14 +80,7 @@ console.log(expo(2, 3))
 
 //27
 function lastNum(num, n) {
-
-    for (let i = 0; i < n; i++) {
-
-        newNum = Math.trunc(num /= 10)
-        last = newNum % 10
-
-    }
-    return last
+    return (Math.trunc(num / Math.pow(10, n - 1))) % 10
 }
 console.log(lastNum(12345, 1))
 console.log(lastNum(12345, 2))
@@ -156,14 +149,14 @@ function howManyBills(num) {
 
 
     return `
-    ${fiveHundred} - $500, 
-    ${twoHundred} - $200, 
-    ${hundred} - $100, 
-    ${fifty} - $50, 
-    ${twenty} - $20, 
-    ${ten} - $10, 
-    ${five} - $5, 
-    ${one} - $1
+    ${fiveHundred} - ₼500, 
+    ${twoHundred} - ₼200, 
+    ${hundred} - ₼100, 
+    ${fifty} - ₼50, 
+    ${twenty} - ₼20, 
+    ${ten} - ₼10, 
+    ${five} - ₼5, 
+    ${one} - ₼1
     `
 }
 console.log(howManyBills(1889))
