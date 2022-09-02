@@ -32,7 +32,7 @@ class myMap {
         for (let i = 0; i < this.array.length; i++) {
             if (this.array[i].key === key) {
                 hasKey = true
-            } else { hasKey = false }
+            }
         }
         return hasKey
     }
