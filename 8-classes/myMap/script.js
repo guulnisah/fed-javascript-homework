@@ -4,16 +4,18 @@ class myMap {
     }
 
     set(key, value) {
-        let hasKey = this.array.some((elem) => {
-            if (Object.keys(elem)[0] === key) {
-                elem[key] = value;
-                return true;
+        if (typeof key !== 'object' && !Array.isArray(key) && key !== null) {
+            let hasKey = this.array.some((elem) => {
+                if (Object.keys(elem)[0] === key) {
+                    elem[key] = value;
+                    return true;
+                }
+            })
+            if (!hasKey) {
+                this.array.push({ [key]: value });
             }
-        })
-        if (!hasKey) {
-            this.array.push({ [key]: value });
-        }
-        return this.array;
+            return this.array;
+        } else { return `Objects and Arrays are not allowed as keys` }
     }
 
     delete(key) {
@@ -52,6 +54,13 @@ class myMap {
     }
 }
 
+const newMap = new myMap()
+console.log(newMap)
+newMap.set('one', 'uno')
+newMap.set('two', 'dos')
+newMap.set('three', 'tres')
+newMap.set('four', 'cuatro')
+newMap.set('one', 'une')
 
 // class myMap {
 //     constructor() {
@@ -101,10 +110,3 @@ class myMap {
 //     }
 // }
 
-const newMap = new myMap()
-console.log(newMap)
-newMap.set('one', 'uno')
-newMap.set('two', 'dos')
-newMap.set('three', 'tres')
-newMap.set('four', 'cuatro')
-newMap.set('one', 'une')
