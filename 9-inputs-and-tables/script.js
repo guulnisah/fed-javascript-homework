@@ -6,9 +6,10 @@ const tbody = document.querySelector('tbody')
 let allData = []
 
 const inputs = document.querySelectorAll('input');
-inputs.forEach((input) => {
-    input.setAttribute('required', '')
-})
+
+// inputs.forEach((input) => {
+//     input.setAttribute('required', '')
+// })
 
 class User {
     constructor(name, surname, email, password) {
@@ -19,8 +20,7 @@ class User {
     }
 }
 
-submitBtn.addEventListener('click', (e) => {
-    e.preventDefault()
+submitBtn.addEventListener('click', () => {
     let userName = document.getElementById('name').value
     let surname = document.getElementById('surname').value
     let email = document.getElementById('email').value
@@ -29,6 +29,8 @@ submitBtn.addEventListener('click', (e) => {
 
     if (password !== passwordRepeat) {
         alert("Passwords don't match")
+    } else if (!userName || !surname || !email || !password) {
+        alert('One of the fields is empty!')
     } else {
         let newUser = new User(userName, surname, email, password)
         allData.push(newUser)
@@ -49,7 +51,6 @@ submitBtn.addEventListener('click', (e) => {
             `
             tbody.appendChild(tr)
         })
-
     }
 })
 
