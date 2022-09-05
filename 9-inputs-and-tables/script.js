@@ -2,14 +2,8 @@ const submitBtn = document.getElementById('submit-button')
 const tableData = document.querySelectorAll('.table-data')
 const resetBtn = document.getElementById('reset-button')
 const tbody = document.querySelector('tbody')
-
-let allData = []
-
 const inputs = document.querySelectorAll('input');
-
-// inputs.forEach((input) => {
-//     input.setAttribute('required', '')
-// })
+let allData = []
 
 class User {
     constructor(name, surname, email, password) {
@@ -34,25 +28,26 @@ submitBtn.addEventListener('click', () => {
     } else {
         let newUser = new User(userName, surname, email, password)
         allData.push(newUser)
-        console.log(allData)
         tbody.innerHTML = ''
-
+        updateTable(allData)
         for (let input of inputs) {
             input.value = ''
         }
-
-        allData.forEach((elem) => {
-            const tr = document.createElement('tr')
-            tr.innerHTML = `
-            <td class="table-data">${elem.name}</td>
-            <td class="table-data">${elem.surname}</td>
-            <td class="table-data">${elem.email}</td>
-            <td class="table-data">${elem.password}</td>
-            `
-            tbody.appendChild(tr)
-        })
     }
 })
+
+function updateTable(arr) {
+    arr.forEach((elem) => {
+        const tr = document.createElement('tr')
+        tr.innerHTML = `
+        <td class="table-data">${elem.name}</td>
+        <td class="table-data">${elem.surname}</td>
+        <td class="table-data">${elem.email}</td>
+        <td class="table-data">${elem.password}</td>
+        `
+        tbody.append(tr)
+    })
+}
 
 resetBtn.addEventListener('click', () => {
     allData = []
