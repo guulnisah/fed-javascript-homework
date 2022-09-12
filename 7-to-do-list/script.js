@@ -1,95 +1,99 @@
+let TODOS = JSON.parse(localStorage.getItem('todos')) || [];
+
+window.addEventListener('load', () => {
+    TODOS = JSON.parse(localStorage.getItem('todos')) || [];
+
+    taskInput.addEventListener('keyup', (e) => {
+        if (taskInput.value) {
+            addBtn.removeAttribute('disabled', '')
+            if (e.key === 'Enter') {
+                createTask()
+                displayTasks()
+                taskInput.value = ''
+                addBtn.setAttribute('disabled', '')
+            }
+        }
+        else { addBtn.setAttribute('disabled', '') }
+    })
+
+    addBtn.addEventListener('click', () => {
+        createTask()
+        displayTasks()
+        taskInput.value = ''
+        addBtn.setAttribute('disabled', '')
+    })
+
+    displayTasks()
+})
+
+
+
 const addBtn = document.getElementById('push')
 const taskInput = document.getElementById('taskInput')
 const list = document.getElementById('tasks')
 
 addBtn.setAttribute('disabled', '')
 
-taskInput.addEventListener('keyup', (e) => {
-    if (taskInput.value) {
-        addBtn.removeAttribute('disabled', '')
-        if (e.key === 'Enter') {
-            addTask()
-        }
+
+class ToDo {
+    constructor(value, checked) {
+        this.value = value
+        this.checked = checked
     }
-    else { addBtn.setAttribute('disabled', '') }
-})
-
-
-addBtn.addEventListener('click', () => {
-    addTask()
-})
-
-function addTask() {
-
-    const task = taskInput.value
-
-    const newTask = document.createElement('div')
-    newTask.classList.add('task')
-
-    newTask.innerHTML = `
-    <div class="actions">
-        <button class="edit">
-            <i class="fa-solid fa-pen-to-square"></i>
-        </button>
-        <button class="complete">
-            <i class="fa-solid fa-check"></i>
-        </button>
-        <button class="delete">
-            <i class="far fa-trash-alt"></i>
-        </button>
-    </div>
-   `
-    const input = document.createElement('input')
-    newTask.prepend(input)
-    input.value = task
-    input.setAttribute('type', 'text')
-    input.setAttribute('readonly', '')
-    input.classList.add('task-text')
-
-    list.appendChild(newTask)
-
-    const editBtn = newTask.querySelector('.edit')
-    editBtn.addEventListener('click', () => {
-        editTask(editBtn)
-    })
-
-    const completeBtn = newTask.querySelector('.complete')
-    completeBtn.addEventListener('click', () => {
-        completeTask(newTask)
-    })
-
-    const deleteBtn = newTask.querySelector('.delete')
-    deleteBtn.addEventListener('click', () => {
-        if (confirm("are you sure?")) {
-            deleteTask(deleteBtn)
-        }
-    })
-
-    taskInput.value = ""
-    addBtn.setAttribute('disabled', '')
 }
 
-function deleteTask(elem) {
-    elem.parentElement.parentElement.remove()
+function createTask() {
+    const todo = new ToDo(taskInput.value, false, false)
+    TODOS.push(todo)
+    localStorage.setItem('todos', JSON.stringify(TODOS));
 }
 
-let completeToggle = false
-function completeTask(elem) {
-    completeToggle = !completeToggle
-    const task = elem.firstChild
-    task.style.textDecoration = completeToggle ? 'line-through' : 'none'
-}
+function displayTasks() {
+    list.innerHTML = ''
+    TODOS.forEach(todo => {
+        const newTask = document.createElement('div')
+        newTask.classList.add('task')
 
-let editToggle = false
-function editTask(elem) {
-    editToggle = !editToggle
-    const inputText = elem.parentElement.parentElement.querySelector('input')
-    if (editToggle) {
-        inputText.removeAttribute('readonly', '')
-        inputText.focus()
-        elem.innerHTML = `<i class="fa-solid fa-floppy-disk"></i>`
-    } else {
-        inputText.setAttribute('readonly', '')
-        elem.innerHTML = `<i class="fa-solid fa-pen-to-square"></i>`
-    }
+        const input = document.createElement('input')
+        input.value = todo.value
+        input.setAttribute('type', 'text')
+        input.setAttribute('readonly', '')
+        input.classList.add('task-value')
+        newTask.prepend(input)
+
+
+        const checkBtn = document.createElement('button')
+        checkBtn.innerHTML = '<i class="fa-solid fa-check"></i>'
+        const deleteBtn = document.createElement('button')
+        deleteBtn.innerHTML = '<i class="far fa-trash-alt"></i>'
+        const actions = document.createElement('div')
+        actions.classList.add('actions')
+        actions.append(checkBtn)
+        actions.append(deleteBtn)
+        newTask.append(actions)
+
+
+        list.appendChild(newTask)
+
+        if (todo.checked) {
+            input.classList.add('checked')
+        } else { input.classList.remove('checked') }
+
+        checkBtn.addEventListener('click', () => {
+            todo.checked = !todo.checked
+            localStorage.setItem('todos', JSON.stringify(TODOS));
+            if (todo.checked) {
+                input.classList.add('checked')
+            } else { input.classList.remove('checked') }
+        })
+
+
+        deleteBtn.addEventListener('click', () => {
+            if (confirm("are you sure?")) {
+                TODOS = TODOS.filter(elem => elem != todo); //???
+                localStorage.setItem('todos', JSON.stringify(TODOS));
+                displayTasks()
+            }
+        })
+    })
 }

@@ -12,6 +12,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Poppins', sans-serif;
 }
 
 .container {
@@ -97,13 +98,18 @@ body {
     height: 100%;
     width: 40px;
     border-radius: 5px;
+    margin-right: 10px;
 }
 
 .task .actions {
     height: 100%;
 }
 
-.task-text {
+.task-value {
     all: unset;
     width: 65%;
+}
+
+.checked {
+    text-decoration: line-through;
 }
