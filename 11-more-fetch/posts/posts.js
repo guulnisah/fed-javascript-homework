@@ -2,6 +2,22 @@ const params = new URLSearchParams(location.search)
 const post = document.getElementById('post')
 const comments = document.getElementById('comments')
 
+const deletePostBtn = document.querySelector('#delete-post')
+
+deletePostBtn.addEventListener('click', () => {
+    if (confirm('Are you sure?')) {
+        fetch(`https://jsonplaceholder.typicode.com/posts/${params.get('id')}`, {
+            method: 'DELETE',
+        }).then(res => {
+            if (res.ok) { alert('The post is deleted! Going back to main page.') }
+        })
+        setTimeout(function () {
+            window.history.back()
+        }, 3000);
+    }
+})
+
+
 displayPosts(getPosts())
 displayComments(getComments())
 
@@ -46,3 +62,5 @@ function displayComments(data) {
     })
 }
 
+const editPostBtn = document.querySelector('#edit-post')
+editPostBtn.innerHTML = `<a href="/posts/edit/?id=${params.get('id')}">Edit this post</a>`

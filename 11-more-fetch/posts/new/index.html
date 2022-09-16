@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make a new post</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    <link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="container">
+    <button type="button" class="btn btn-primary"><a href="../../index.html">Back to main page</a></button>
+
+    <p>Here you can make a new post for our website.</p>
+    <form id="post-form">
+        <select class="form-select" aria-label="Disabled select example" id="id-options" required>
+            <option value="1" selected>1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+        <input type="text" class="form-control" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-default" id="post-title" required>
+        <textarea class="form-control" aria-label="With textarea" id="post-text" required></textarea>
+        <button class="btn btn-primary" type="submit" id="submit-post">Submit form</button>
+    </form>
+
+    <script src="new.js"></script>
+</body>
+
+</html>

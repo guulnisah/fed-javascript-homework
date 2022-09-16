@@ -5,7 +5,7 @@ fetch('https://jsonplaceholder.typicode.com/posts')
     .then(data => {
         data.forEach((elem) => {
             const postLink = document.createElement('a')
-            postLink.innerHTML = elem.title
+            postLink.textContent = elem.title
             postLink.setAttribute('href', `/posts/?id=${elem.id}`)
             postsContainer.append(postLink)
             postLink.style.display = 'block'
@@ -14,3 +14,5 @@ fetch('https://jsonplaceholder.typicode.com/posts')
 
 
 
+const newPostBtn = document.querySelector('#new-post')
+newPostBtn.innerHTML = `<a href="/posts/new">Make a new Post</a>`

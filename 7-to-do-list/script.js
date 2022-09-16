@@ -43,7 +43,7 @@ class ToDo {
 }
 
 function createTask() {
-    const todo = new ToDo(taskInput.value, false, false)
+    const todo = new ToDo(taskInput.value, false)
     TODOS.push(todo)
     localStorage.setItem('todos', JSON.stringify(TODOS));
 }
@@ -90,7 +90,7 @@ function displayTasks() {
 
         deleteBtn.addEventListener('click', () => {
             if (confirm("are you sure?")) {
-                TODOS = TODOS.filter(elem => elem != todo); //???
+                TODOS = TODOS.filter(elem => elem != todo); //??? use splice fro this maybe 
                 localStorage.setItem('todos', JSON.stringify(TODOS));
                 displayTasks()
             }
