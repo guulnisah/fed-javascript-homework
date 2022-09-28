@@ -1,4 +1,15 @@
 let TODOS = JSON.parse(localStorage.getItem('todos')) || [];
+const addBtn = document.getElementById('push')
+const taskInput = document.getElementById('taskInput')
+const list = document.getElementById('tasks')
+addBtn.setAttribute('disabled', '')
+
+class ToDo {
+    constructor(value, checked) {
+        this.value = value
+        this.checked = checked
+    }
+}
 
 window.addEventListener('load', () => {
     TODOS = JSON.parse(localStorage.getItem('todos')) || [];
@@ -25,22 +36,6 @@ window.addEventListener('load', () => {
 
     displayTasks()
 })
-
-
-
-const addBtn = document.getElementById('push')
-const taskInput = document.getElementById('taskInput')
-const list = document.getElementById('tasks')
-
-addBtn.setAttribute('disabled', '')
-
-
-class ToDo {
-    constructor(value, checked) {
-        this.value = value
-        this.checked = checked
-    }
-}
 
 function createTask() {
     const todo = new ToDo(taskInput.value, false)
@@ -90,7 +85,7 @@ function displayTasks() {
 
         deleteBtn.addEventListener('click', () => {
             if (confirm("are you sure?")) {
-                TODOS = TODOS.filter(elem => elem != todo); //??? use splice fro this maybe 
+                TODOS = TODOS.filter(elem => elem != todo); //??? use splice fro this maybe
                 localStorage.setItem('todos', JSON.stringify(TODOS));
                 displayTasks()
             }
